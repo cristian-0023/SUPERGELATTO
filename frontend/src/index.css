@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background-dark: #0d0a1a;
+  --color-background-card: rgba(26, 22, 46, 0.6);
+  --color-gold-premium: #d4af37;
+  --color-gold-light: #f1d592;
+  --color-pastel-pink: #ffb7c5;
+  --color-pastel-blue: #b2e2f2;
+  --color-pastel-green: #c1f0c1;
+  --color-pastel-lavender: #e6e6fa;
+  
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: Poppins, sans-serif;
+  
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+    100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background-dark text-white font-poppins antialiased;
+    background: radial-gradient(circle at top left, #1a162e 0%, #0d0a1a 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-background-card backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .premium-button {
+    @apply px-6 py-2 rounded-full font-semibold transition-all duration-300 active:scale-95;
+    background: linear-gradient(135deg, #d4af37 0%, #f1d592 100%);
+    color: #0d0a1a;
+  }
+
+  .premium-button:hover {
+    @apply shadow-[0_0_15px_rgba(212,175,55,0.4)];
+    transform: translateY(-2px);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:border-gold-premium/50 focus:outline-none transition-all;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
