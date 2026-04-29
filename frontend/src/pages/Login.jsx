@@ -130,9 +130,12 @@ function Login({ onLogin }) {
         <div className="login-card">
           {/* Brand */}
           <div className="login-brand">
-            <div className="login-brand__icon-row">
-              <span className="login-brand__icon">🍦</span>
-              <h1 className="login-brand__name">Super Gelatto</h1>
+            <div className="login-brand__logo-container">
+              <img 
+                src="/images/Gemini_Generated_Image_eq9r4req9r4req9r (3).png" 
+                alt="super gelatto" 
+                className="login-brand__logo"
+              />
             </div>
             <h2 className="login-brand__welcome">¡Hola de nuevo!</h2>
             <p className="login-brand__subtitle">Ingresa a tu taller del sabor.</p>

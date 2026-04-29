@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, LogOut, User, Menu, X, Star, RotateCcw } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import CartDrawer from './CartDrawer';
+import '../styles/Navbar.css';
 
 const Navbar = ({ user, onLogout }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -46,18 +47,25 @@ const Navbar = ({ user, onLogout }) => {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background-dark/80 backdrop-blur-lg border-b border-white/10 py-3' : 'bg-transparent py-5'
+      <nav className={`fixed top-0 w-full h-[80px] flex items-center z-[100] transition-all duration-500 ${
+        scrolled 
+          ? 'bg-background-dark/95 backdrop-blur-xl border-b border-white/10 shadow-2xl' 
+          : 'bg-background-dark/60 backdrop-blur-sm'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <span className="text-3xl group-hover:scale-110 transition-transform">🍦</span>
-            <span className="text-2xl font-playfair font-bold text-gold-premium tracking-tight">Super Gelatto</span>
-          </Link>
+        <div className="w-full max-w-[1400px] mx-auto px-8 flex justify-between items-center">
+          {/* Logo - Fixed width for centering balance */}
+          <div className="flex-1 flex justify-start">
+            <Link to="/" className="flex items-center group relative">
+              <img 
+                src="/images/Gemini_Generated_Image_eq9r4req9r4req9r (3).png" 
+                alt="super gelatto" 
+                className="navbar-logo-pop" 
+              />
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center justify-center gap-10 flex-[2]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -71,81 +79,99 @@ const Navbar = ({ user, onLogout }) => {
             ))}
             {/* 360 Builder Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
               onClick={scrollToBuilder}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-400/15 to-orange-500/10 border border-amber-400/30 text-amber-300 text-sm font-bold hover:border-amber-400/60 hover:bg-amber-400/20 transition-all duration-300 shadow-sm shadow-amber-400/10"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-background-dark/40 backdrop-blur-md border border-amber-400/20 text-amber-300 text-xs font-bold hover:border-amber-400/50 hover:bg-amber-400/10 transition-all duration-300"
             >
-              <RotateCcw size={14} className="animate-spin" style={{ animationDuration: '3s' }} />
-              Gelato 360°
+              <RotateCcw size={14} className="animate-spin" style={{ animationDuration: '4s' }} />
+              <span className="tracking-wide">GELATO 360°</span>
             </motion.button>
 
             {/* SuperPoints Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
               onClick={scrollToSuperPoints}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400/15 to-amber-500/10 border border-yellow-400/30 text-yellow-300 text-sm font-bold hover:border-yellow-400/60 hover:bg-yellow-400/20 transition-all duration-300 shadow-sm shadow-yellow-400/10"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-background-dark/40 backdrop-blur-md border border-yellow-400/20 text-yellow-300 text-xs font-bold hover:border-yellow-400/50 hover:bg-yellow-400/10 transition-all duration-300"
             >
-              <Star size={14} className="fill-yellow-300 text-yellow-300" />
-              SuperPoints
+              <Star size={14} className="fill-yellow-300/80 text-yellow-300" />
+              <span className="tracking-wide">SUPERPOINTS</span>
             </motion.button>
           </div>
 
-          {/* User Info & Cart */}
-          <div className="hidden md:flex items-center gap-6">
-            {/* SuperPoints */}
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-gold-premium/10 border border-gold-premium/20 rounded-full">
-              <Star size={14} className="text-gold-premium fill-gold-premium" />
-              <span className="text-xs font-bold text-gold-premium">120 pts</span>
+          {/* User Info & Cart - Fixed width for centering balance */}
+          <div className="flex-1 hidden md:flex items-center justify-end gap-8">
+            {/* SuperPoints Badge */}
+            <div className="flex items-center gap-2 px-4 py-1.5 bg-gold-premium/5 border border-gold-premium/10 rounded-full group hover:border-gold-premium/30 transition-all">
+              <Star size={13} className="text-gold-premium fill-gold-premium animate-pulse" />
+              <span className="text-xs font-bold text-gold-premium/90 tracking-tighter">120 PTS</span>
             </div>
 
             {/* Cart Icon */}
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-white/70 hover:text-gold-premium transition-colors"
-            >
-              <ShoppingCart size={22} />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gold-premium text-background-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </button>
+            <div className="relative flex items-center">
+              <button 
+                onClick={() => setIsCartOpen(!isCartOpen)}
+                className="relative p-2 text-white/70 hover:text-gold-premium transition-colors"
+              >
+                <ShoppingCart size={22} />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gold-premium text-background-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+              {/* Desktop Cart Dropdown */}
+              <div className="hidden md:block">
+                <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+              </div>
+            </div>
 
             {/* User Avatar & Logout */}
-            <div className="flex items-center gap-4 pl-6 border-l border-white/10">
-              <Link to="/perfil" className="flex items-center gap-2 group">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pastel-pink to-gold-premium flex items-center justify-center text-background-dark font-bold text-xs ring-2 ring-white/10 group-hover:ring-gold-premium/50 transition-all">
-                  {user?.name?.charAt(0).toUpperCase() || <User size={14} />}
+            <div className="flex items-center gap-5 pl-8 border-l border-white/5">
+              <Link to="/perfil" className="flex items-center gap-3 group">
+                <div className="relative">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pastel-pink to-gold-premium flex items-center justify-center text-background-dark font-black text-sm ring-2 ring-white/5 group-hover:ring-gold-premium/40 transition-all shadow-lg shadow-gold-premium/10">
+                    {user?.name?.charAt(0).toUpperCase() || <User size={16} />}
+                  </div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-background-dark rounded-full"></div>
                 </div>
-                <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                  {user?.name?.split(' ')[0] || 'Gourmet'}
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-white/90 group-hover:text-gold-premium transition-colors leading-none">
+                    {user?.name?.split(' ')[0] || 'Gourmet'}
+                  </span>
+                  <span className="text-[10px] text-white/40 font-medium uppercase tracking-widest mt-1">Miembro</span>
+                </div>
               </Link>
               <button 
                 onClick={onLogout}
-                className="p-2 text-white/40 hover:text-red-400 transition-colors"
+                className="p-2.5 text-white/20 hover:text-red-400 hover:bg-red-400/5 rounded-xl transition-all"
                 title="Cerrar Sesión"
               >
-                <LogOut size={20} />
+                <LogOut size={18} />
               </button>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-white/70"
-            >
-              <ShoppingCart size={22} />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gold-premium text-background-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </button>
+            <div className="relative flex items-center">
+              <button 
+                onClick={() => setIsCartOpen(!isCartOpen)}
+                className="relative p-2 text-white/70"
+              >
+                <ShoppingCart size={22} />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-gold-premium text-background-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+              {/* Mobile Cart Dropdown */}
+              <div className="md:hidden">
+                <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+              </div>
+            </div>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white/70 hover:text-white transition-colors"
@@ -214,8 +240,6 @@ const Navbar = ({ user, onLogout }) => {
           )}
         </AnimatePresence>
       </nav>
-      
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 };

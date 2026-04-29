@@ -53,7 +53,7 @@ const ProductsPage = ({ user }) => {
   }, [searchTerm, selectedCategory, sortBy]);
 
   return (
-    <div className="pt-32 pb-24 px-6 min-h-screen">
+    <div className="pt-[80px] pb-24 px-6 min-h-screen">
       <FlavorModal flavor={selectedFlavor} onClose={() => setSelectedFlavor(null)} user={user} />
 
       <div className="max-w-7xl mx-auto">

@@ -68,9 +68,12 @@ function ForgotPassword() {
         <div className="login-card">
           {/* Brand */}
           <div className="login-brand">
-            <div className="login-brand__icon-row">
-              <span className="login-brand__icon">{sent ? '📬' : '🔐'}</span>
-              <h1 className="login-brand__name">Super Gelatto</h1>
+            <div className="login-brand__logo-container">
+              <img 
+                src="/images/logo.png" 
+                alt="super gelatto" 
+                className="login-brand__logo"
+              />
             </div>
             <h2 className="login-brand__welcome">
               {sent ? '¡Revisa tu correo!' : 'Recuperar Cuenta'}

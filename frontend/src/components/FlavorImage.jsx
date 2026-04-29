@@ -48,7 +48,7 @@ const FlavorImage = ({ flavor, className = '' }) => {
       </span>
       {/* Subtle name watermark */}
       <span className="relative mt-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 select-none">
-        {flavor?.name || 'Super Gelatto'}
+        {flavor?.name || 'super gelatto'}
       </span>
     </div>
   );

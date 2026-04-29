@@ -20,16 +20,15 @@ const MAX_SCOOPS = 3;
 const MAX_TOPPINGS = 3;
 const SCOOP_HEIGHT = 0.7;   // vertical spacing between scoops (compact)
 
-// Topping horizontal offsets so they spread around the top, not stack vertically
-const TOPPING_OFFSETS = [
-  [0, 0, 0],        // 1st topping: center
-  [0.35, 0, 0.35],  // 2nd topping: front-right
-  [-0.35, 0, -0.35], // 3rd topping: back-left
+// Topping transforms to cluster them beautifully at the center top
+const TOPPING_TRANSFORMS = [
+  { pos: [0, 0, 0], rot: [0, 0, 0] },                                  // 1st topping: perfectly centered
+  { pos: [0.12, 0.08, 0.12], rot: [0.1, Math.PI / 4, -0.1] },          // 2nd topping: slightly right/front, tilted
+  { pos: [-0.12, 0.05, -0.12], rot: [-0.1, -Math.PI / 6, 0.1] },       // 3rd topping: slightly left/back, tilted
 ];
 
-/* ─── Single Part Model (no self-rotation) ────────────── */
 /* ─── Single Part Model with Material Optimization ────────────── */
-const PartModel = ({ url, position = [0, 0, 0], scale = 1, isScoop = false }) => {
+const PartModel = ({ url, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1, isScoop = false }) => {
   const { scene } = useGLTF(url);
   
   // Clone and optimize materials for a "creamy" look
@@ -50,7 +49,7 @@ const PartModel = ({ url, position = [0, 0, 0], scale = 1, isScoop = false }) =>
     return root;
   }, [scene, isScoop]);
 
-  return <primitive object={cloned} position={position} scale={scale} />;
+  return <primitive object={cloned} position={position} rotation={rotation} scale={scale} />;
 };
 
 /* ─── Rotating Group that holds all parts ─────────────── */
@@ -177,18 +176,19 @@ const GelatoScene = ({ container, selectedScoops, selectedToppings }) => {
           );
         })}
 
-        {/* Toppings — spread horizontally on top of the last scoop */}
+        {/* Toppings — spread beautifully at the center top of the last scoop */}
         {selectedToppings.map((toppingId, index) => {
           const toppingData = toppingsData.find(t => t.id === toppingId);
           if (!toppingData) return null;
-          const offset = TOPPING_OFFSETS[index] || [0, 0, 0];
-          const y = toppingBaseY + offset[1];
+          const transform = TOPPING_TRANSFORMS[index] || { pos: [0, 0, 0], rot: [0, 0, 0] };
+          const y = toppingBaseY + transform.pos[1];
           return (
             <Suspense key={`topping-${index}-${toppingId}`} fallback={null}>
               <PartModel
                 url={`${BASE_PATH}/${toppingData.file}`}
                 scale={toppingData.scale}
-                position={[offset[0], y, offset[2]]}
+                position={[transform.pos[0], y, transform.pos[2]]}
+                rotation={transform.rot}
               />
             </Suspense>
           );

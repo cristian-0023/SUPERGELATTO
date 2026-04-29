@@ -83,7 +83,7 @@ const ProfilePage = ({ user, onUpdateUser }) => {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 min-h-screen">
+    <div className="pt-[80px] pb-24 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-8">
           

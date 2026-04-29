@@ -1,7 +1,7 @@
 {
   "name": "super-gelatto-backend",
   "version": "1.0.0",
-  "description": "Backend for Super Gelatto app",
+  "description": "Backend for super gelatto app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

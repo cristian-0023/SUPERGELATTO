@@ -31,6 +31,22 @@
 }
 
 /* ─── Logo ──────────────────────────────────────────────── */
+.navbar-logo-pop {
+  height: 85px;
+  width: auto;
+  object-contain: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 60;
+  margin-top: 15px; /* Adjust to overlap down or keep it balanced */
+}
+
+.group:hover .navbar-logo-pop {
+  transform: scale(1.1) translateY(5px);
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+}
+
 .navbar__logo {
   display: flex;
   align-items: center;

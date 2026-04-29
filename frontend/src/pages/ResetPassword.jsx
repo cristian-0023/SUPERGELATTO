@@ -105,9 +105,12 @@ function ResetPassword() {
         <div className="login-page__container">
           <div className="login-card">
             <div className="login-brand">
-              <div className="login-brand__icon-row">
-                <span className="login-brand__icon login-form__submit--loading" style={{ display: 'inline-block' }}>🍦</span>
-                <h1 className="login-brand__name">Super Gelatto</h1>
+              <div className="login-brand__logo-container">
+                <img 
+                  src="/images/logo.png" 
+                  alt="super gelatto" 
+                  className="login-brand__logo"
+                />
               </div>
               <h2 className="login-brand__welcome">Validando...</h2>
               <p className="login-brand__subtitle">Verificando tu enlace de recuperación.</p>
@@ -131,9 +134,12 @@ function ResetPassword() {
         <div className="login-page__container">
           <div className="login-card">
             <div className="login-brand">
-              <div className="login-brand__icon-row">
-                <span className="login-brand__icon">❌</span>
-                <h1 className="login-brand__name">Super Gelatto</h1>
+              <div className="login-brand__logo-container">
+                <img 
+                  src="/images/logo.png" 
+                  alt="super gelatto" 
+                  className="login-brand__logo"
+                />
               </div>
               <h2 className="login-brand__welcome">Enlace Inválido</h2>
               <p className="login-brand__subtitle">
@@ -173,10 +179,14 @@ function ResetPassword() {
       <div className="login-page__container">
         <div className="login-card">
           <div className="login-brand">
-            <div className="login-brand__icon-row">
-              <span className="login-brand__icon">{success ? '🎉' : '🔑'}</span>
-              <h1 className="login-brand__name">Super Gelatto</h1>
+            <div className="login-brand__logo-container">
+              <img 
+                src="/images/logo.png" 
+                alt="super gelatto" 
+                className="login-brand__logo"
+              />
             </div>
+            <h1 className="hidden">super gelatto</h1>
             <h2 className="login-brand__welcome">
               {success ? '¡Completado!' : 'Nueva Contraseña'}
             </h2>

@@ -21,7 +21,7 @@ const storyParagraphs = [
     highlight: false,
   },
   {
-    text: 'Entonces llegó Super Gelatto.',
+    text: 'Entonces llegó super gelatto.',
     highlight: true,
   },
   {
@@ -29,7 +29,7 @@ const storyParagraphs = [
     highlight: false,
   },
   {
-    text: 'Pero lo que realmente hacía diferente a Super Gelatto era su mundo digital. Desde la app, cada cliente podía construir su gelato ideal — elegir el recipiente, los sabores, los toppings — girándolo en 360° antes de ordenarlo, como si lo tuviera en las manos. Era como diseñar tu propio pequeño universo helado.',
+    text: 'Pero lo que realmente hacía diferente a super gelatto era su mundo digital. Desde la app, cada cliente podía construir su gelato ideal — elegir el recipiente, los sabores, los toppings — girándolo en 360° antes de ordenarlo, como si lo tuviera en las manos. Era como diseñar tu propio pequeño universo helado.',
     highlight: false,
   },
   {
@@ -37,7 +37,7 @@ const storyParagraphs = [
     highlight: false,
   },
   {
-    text: 'Super Gelatto no vendía helado.',
+    text: 'super gelatto no vendía helado.',
     highlight: true,
   },
   {
@@ -149,7 +149,7 @@ const Home = ({ user }) => {
   const featured = FLAVORS.slice(0, 6);
 
   return (
-    <div className="pt-20">
+    <div className="pt-[80px]">
       {/* ─── Flavor Modal ──────────────────────────────── */}
       <FlavorModal flavor={selectedFlavor} onClose={() => setSelectedFlavor(null)} user={user} />
 
@@ -296,21 +296,12 @@ const Home = ({ user }) => {
           </motion.div>
 
           {/* Animation frames — right side */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="hidden md:flex items-center justify-end pr-0 relative"
-          >
-            {/* Subtle glow behind animation */}
-            <div className="absolute right-0 flex items-center justify-end pointer-events-none">
-              <div className="w-80 h-80 bg-pastel-pink/15 blur-[100px] rounded-full" />
-            </div>
+          <div className="flex items-center justify-center md:justify-end relative z-10 md:translate-x-16">
             <FrameAnimation
               fps={24}
-              className="relative z-10 w-[440px] h-[440px] drop-shadow-[0_30px_60px_rgba(255,183,197,0.2)] translate-x-24"
+              className="relative z-10 w-[240px] h-[240px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden shadow-2xl drop-shadow-[0_20px_40px_rgba(255,183,197,0.15)]"
             />
-          </motion.div>
+          </div>
 
         </div>
       </section>
@@ -536,8 +527,6 @@ const Home = ({ user }) => {
             ))}
           </div>
 
-
-
         </div>
       </section>
 
@@ -547,8 +536,11 @@ const Home = ({ user }) => {
           <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
             <div className="max-w-xs">
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-3xl">🍦</span>
-                <span className="text-2xl font-playfair font-bold text-gold-premium">Super Gelatto</span>
+                <img 
+                  src="/images/Gemini_Generated_Image_eq9r4req9r4req9r (3).png" 
+                  alt="super gelatto" 
+                  className="h-14 w-auto object-contain" 
+                />
               </div>
               <p className="text-white/40 text-sm leading-relaxed mb-6">
                 Redefiniendo el placer del helado artesanal en cada bocado. Calidad gourmet, pasión local.
@@ -584,7 +576,7 @@ const Home = ({ user }) => {
 
           <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/30 text-xs text-center md:text-left">
-              © 2025 Super Gelatto Artigianale. Todos los derechos reservados.
+              © 2025 super gelatto Artigianale. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 text-[10px] text-white/20 uppercase tracking-widest font-bold">
               <span>GDL, MX</span>

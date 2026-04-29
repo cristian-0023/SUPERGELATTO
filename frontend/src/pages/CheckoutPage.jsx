@@ -37,7 +37,7 @@ const CheckoutPage = ({ user }) => {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6">
+      <div className="pt-[80px] pb-24 px-6 min-h-screen flex items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

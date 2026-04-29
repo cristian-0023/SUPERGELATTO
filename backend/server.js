@@ -134,7 +134,7 @@ app.post('/api/forgot-password', async (req, res) => {
     const emailTransporter = await getTransporter();
     const fromEmail = process.env.SMTP_USER || 'no-reply@supergelatto.com';
     const info = await emailTransporter.sendMail({
-      from: `"Super Gelatto 🍦" <${fromEmail}>`,
+      from: `"super gelatto 🍦" <${fromEmail}>`,
       to: email,
       subject: '🔐 Restablecer contraseña',
       html: `<p>Hola ${dbUser.nombre}, haz clic aquí: <a href="${resetLink}">${resetLink}</a></p>`

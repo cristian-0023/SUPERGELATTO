@@ -47,6 +47,7 @@
 /* ─── Brand ────────────────────────────────────────────────── */
 .login-brand {
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .login-brand__icon-row {
@@ -54,6 +55,32 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.login-brand__logo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -160px;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.login-brand__logo {
+  height: 380px;
+  width: auto;
+  max-width: 120%;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.login-brand__logo:hover {
+  transform: scale(1.50);
+}
+
+.login-brand--center .login-brand__logo-container {
+  justify-content: center;
 }
 
 .login-brand__icon {
@@ -220,9 +247,17 @@
 }
 
 @keyframes shimmer {
-  0%  { transform: translate(-100%, -100%) rotate(45deg); }
-  20% { transform: translate(100%, 100%) rotate(45deg); }
-  100%{ transform: translate(100%, 100%) rotate(45deg); }
+  0% {
+    transform: translate(-100%, -100%) rotate(45deg);
+  }
+
+  20% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
 }
 
 /* ─── Divider (light variant) ──────────────────────────────── */
@@ -369,18 +404,18 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 520px;
-  padding: 3rem;
+  max-width: 580px;
+  padding: 8rem 2rem 3rem 2rem;
 }
 
 .login-card {
   background: rgba(250, 249, 246, 0.12);
   backdrop-filter: blur(24px) saturate(140%);
   -webkit-backdrop-filter: blur(24px) saturate(140%);
-  border-radius: 2.5rem;
-  padding: 3.5rem 3rem;
+  border-radius: 3rem;
+  padding: 2.5rem 3.5rem 4rem 3.5rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
 }
 
 .login-brand__name {
@@ -391,7 +426,7 @@
   color: #fff;
   letter-spacing: -0.01em;
   margin: 0;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .login-brand__welcome {
@@ -402,7 +437,7 @@
   color: #FFC107;
   margin: 0;
   line-height: 1.15;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .login-brand__subtitle {
@@ -453,7 +488,7 @@
 
 /* Autofill override for coffee tone */
 .login-form__input:-webkit-autofill,
-.login-form__input:-webkit-autofill:hover, 
+.login-form__input:-webkit-autofill:hover,
 .login-form__input:-webkit-autofill:focus {
   -webkit-text-fill-color: #fff !important;
   -webkit-box-shadow: 0 0 0px 1000px rgba(80, 50, 40, 0.6) inset !important;
