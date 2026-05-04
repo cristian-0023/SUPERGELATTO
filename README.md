@@ -1,5 +1,12 @@
 # 🍦 Super Gelatto 2.0
 
+##Integrantes
+
+-INTEGRANTE 1:JAIDER FUNES
+-INTEGRANTE 2:MIGUEL VILLA
+-INTEGRANTE 3:CRISTIAN MUNERA
+-INTEGRANTE 4:BREIDIS TABARES
+
 ¡Bienvenido a **Super Gelatto 2.0**! Esta es una aplicación web moderna y completa para una heladería artesanal, que incluye una interfaz de usuario premium, un sistema de puntos de lealtad, autenticación y un constructor de helados interactivo en 3D.
 
 ## 🚀 Estructura del Proyecto
